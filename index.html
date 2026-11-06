@@ -1,0 +1,154 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Hannah in Sayulita 🌴</title>
+<link rel=stylesheet href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>:root{--teal:#2a9d8f;--blue:#457b9d;--gold:#e9a23b;--ink:#1d3557;--paper:#fff;--sub:#666;--sand:#fdf6ec}body{background:var(--sand);color:var(--ink)}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif}
+header{padding:14px 16px 4px} h1{margin:0;font-size:23px} .sub{font-size:14px;color:var(--sub);margin-top:4px}
+.wrap{padding:0 16px 20px;max-width:900px} h2{font-size:18px;margin:18px 0 8px}
+#map{height:400px;margin:8px 16px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+@media(max-width:600px){#map{height:340px}}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;padding:2px 16px 4px;color:var(--sub)}
+.fcard,.card{background:var(--paper);border-radius:12px;padding:12px 14px;margin:8px 0;box-shadow:0 1px 4px rgba(0,0,0,.08);border-left:5px solid var(--blue)}
+.fcard.top,.card.top{border-left-color:var(--teal)} .fd{font-weight:700;font-size:16px}
+.card{display:flex;gap:12px;cursor:pointer;padding:12px} .hero{width:120px;height:96px;object-fit:cover;border-radius:10px;flex:0 0 120px}
+@media(max-width:520px){.card{flex-direction:column}.hero{width:100%;height:160px;flex:none}}
+.row{display:flex;align-items:center;gap:8px} .badge{flex:0 0 26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.card.top .badge{background:var(--teal)} .card.closer{border-left-color:var(--gold)} .card.closer .badge{background:var(--gold)} .diff{font-weight:600}
+.name{font-weight:700;font-size:16px}
+.price{margin-top:4px} .meta{font-size:13px;margin-top:3px} .note{font-size:13px;color:var(--sub);margin-top:3px} .muted{color:var(--sub);font-size:13px}
+.btn{display:inline-block;margin-top:8px;background:var(--ink);color:var(--paper);text-decoration:none;padding:7px 12px;border-radius:8px;font-size:14px}
+.pin{width:28px;height:28px;border-radius:50%;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);font-size:13px}
+.home{font-size:30px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.combo{width:100%;border-collapse:collapse;font-size:14px;background:var(--paper);border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.combo th,.combo td{padding:8px 10px;text-align:left;border-bottom:1px solid rgba(127,127,127,.18);vertical-align:top} .combo th{font-size:12px;color:var(--sub);font-weight:600}
+.combo td:nth-child(n+2),.combo th:nth-child(n+2){text-align:right;white-space:nowrap} .combo tr.top td{background:rgba(42,157,143,.12)}
+.callout{margin:10px 0;padding:12px 14px;border-radius:12px;background:rgba(233,162,59,.15);font-size:14px}
+footer{font-size:12px;color:var(--sub);padding:0 16px 24px}
+.leaflet-popup-content{font-size:14px;line-height:1.4;color:#1d3557} .leaflet-popup-content a{color:#2a9d8f;font-weight:600}
+</style></head><body>
+<header><h1>🌴 Hannah comes to Sayulita!</h1><div class=sub>Suggested: Sat 21 to Fri 27 Nov 2026 (6 nights) · 3 of us, one place · all prices in US dollars, taxes and fees included</div></header>
+<div class=wrap><h2>🧮 Flights + Casa Amanecer</h2><table class=combo><tr><th>Dates</th><th>Casa Amanecer</th><th>✈️ Phoenix<br>nonstop</th><th>✈️ Tucson<br>1 stop</th></tr><tr class="top"><td><b>⭐ Sat 21 to Fri 27 Nov</b><br><span class=muted>6 nights · Phoenix: Southwest both ways</span></td>
+<td>$1,310</td><td>$1,136<br><span class=muted>together $2,446</span></td><td>$1,204<br><span class=muted>together $2,514</span></td></tr><tr class=""><td><b>Sat 21 to Thu 26 Nov</b><br><span class=muted>5 nights · Phoenix: 2 bookings. Tucson: overnight in Phoenix on the way home</span></td>
+<td>$1,116</td><td>$995<br><span class=muted>together $2,111</span></td><td>$1,262<br><span class=muted>together $2,378</span></td></tr><tr class=""><td><b>Sat 21 to Wed 25 Nov</b><br><span class=muted>4 nights</span></td>
+<td>$923</td><td>$930<br><span class=muted>together $1,853</span></td><td>$901<br><span class=muted>together $1,824</span></td></tr><tr class=""><td><b>Mon 23 to Fri 27 Nov</b><br><span class=muted>4 nights · Host has lowered these nights. Tucson: United</span></td>
+<td>$847</td><td>$1,040<br><span class=muted>together $1,887</span></td><td>$1,057<br><span class=muted>together $1,904</span></td></tr><tr class=""><td><b>Sun 22 to Thu 26 Nov</b><br><span class=muted>4 nights · Tucson: overnight in Phoenix on the way home</span></td>
+<td>$947</td><td>$1,029<br><span class=muted>together $1,976</span></td><td>$898<br><span class=muted>together $1,845</span></td></tr><tr class=""><td><b>Sat 21 to Sat 28 Nov</b><br><span class=muted>7 nights · Full week, $40 weekly discount included</span></td>
+<td>$1,455</td><td>$1,618<br><span class=muted>together $3,073</span></td><td>$1,121<br><span class=muted>together $2,576</span></td></tr></table>
+<div class=muted>Flights are Hannah's return ticket with 1 checked bag + carry-on. "Together" = her flight + the whole house for the 3 of us. Tucson has no nonstop: about 5 to 8 hours each way via Phoenix, San Diego, Denver or Houston. Groome shuttle Tucson ⇄ Phoenix airport: $94 return, about 2 hours each way.</div>
+<div class=callout>📅 <b>Is a full week worth it?</b> Casa Amanecer takes off only $40 for 7 nights, so the 7th night still adds $145 to the stay.<br>
+From Phoenix, flying home Sat 28 instead of Fri 27 costs $482 more: <b>$627 more</b> for the week.<br>
+From Tucson, the Sat 28 flight is $83 cheaper than Fri 27: the week is only <b>$62 more</b>.</div>
+<h2>✈️ Hannah's flights, Phoenix ⇄ Puerto Vallarta</h2><div class="fcard top">
+<div class=fd>⭐ Sat 21 to Fri 27 Nov <span class=muted>· 6 nights</span></div>
+<div class=price><b>$1,136</b> return <span class=muted>with 1 checked bag + carry-on</span></div>
+<div class=meta>✈️ Southwest nonstop · out 08:15 → 11:45 · back 14:40 → 16:20</div>
+<div class=note>Our pick: most nights, one airline.</div></div><div class="fcard">
+<div class=fd>Sat 21 to Thu 26 Nov <span class=muted>· 5 nights</span></div>
+<div class=price><b>$995</b> return <span class=muted>with 1 checked bag + carry-on</span></div>
+<div class=meta>✈️ Southwest out, American back nonstop · out 08:15 → 11:45 · back 14:12 → 16:02</div>
+<div class=note>Two separate bookings: if one flight is disrupted, the other airline won't rebook.</div></div><div class="fcard">
+<div class=fd>Sat 21 to Wed 25 Nov <span class=muted>· 4 nights</span></div>
+<div class=price><b>$930</b> return <span class=muted>with 1 checked bag + carry-on</span></div>
+<div class=meta>✈️ Southwest nonstop · out 08:15 → 11:45 · back 13:40 → 15:20</div>
+<div class=note>Cheapest.</div></div><div class="fcard">
+<div class=fd>Mon 23 to Fri 27 Nov <span class=muted>· 4 nights</span></div>
+<div class=price><b>$1,040</b> return <span class=muted>with 1 checked bag + carry-on</span></div>
+<div class=meta>✈️ Southwest nonstop · out 09:15 → 12:45 · back 14:40 → 16:20</div>
+<div class=note>Only 1 seat left at this price (5 Nov).</div></div>
+<div class=muted>A 2nd checked bag adds about $110 return. Basic fares: no changes.</div></div>
+<div class=wrap style="padding-bottom:0"><h2>🗺️ Where everything is</h2></div>
+<div id=map></div><div class=legend><span>🏠 Casa Aguanas</span><span><b style="color:#2a9d8f">●</b> Our favourite</span><span><b style="color:#e9a23b">●</b> Closer to beach and plaza</span><span><b style="color:#457b9d">●</b> Same price or cheaper</span></div>
+<div class=wrap><h2>⭐ Our favourite</h2><div class="card top" onclick="go(0)">
+<img class=hero src="https://a0.muscache.com/im/pictures/hosting/Hosting-686266949664475760/original/e65f8507-480c-43ae-a93d-c04c23185803.jpeg" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>1</span><span class=name>Casa Amanecer, Gringo Hill</span></div>
+<div class=price><b>$1,310</b> for 6 nights <span class=muted>($218 a night)</span></div>
+<div class=meta>🛏️ 2 king bedrooms, each with its own bathroom, + half bath</div>
+<div class=meta>🚶 plaza 7 min · beach 7 min · Casa Aguanas 3 min</div>
+<div class=meta>4.92/5 (50) · ❄️ AC 🧺 laundry</div>
+<div class=note>Big open living room and 2 covered terraces with valley views. Las Terrazas unit 3, Saturno 19. 2 flights of stairs up. Washer on request.</div>
+<a class=btn href="https://www.airbnb.com/rooms/686266949664475760" target=_blank onclick="event.stopPropagation()">See it on Airbnb ↗</a></div></div><h2>🏖️ Closer to the beach and plaza</h2><div class="card closer" onclick="go(1)">
+<img class=hero src="https://a0.muscache.com/im/pictures/9098c77f-eca8-4432-912a-38a3b7624a22.jpg" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>2</span><span class=name>Casa Lavanda</span></div>
+<div class=price><b>$1,716</b> for 6 nights <span class=muted>($286 a night) · <span class=diff>$406 more than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ King room + room with 2 doubles, 2 bathrooms</div>
+<div class=meta>🚶 plaza 4 min · beach 2 min · Casa Aguanas 7 min</div>
+<div class=meta>4.93/5 (74) · ❄️ AC 🏊 pool</div>
+<div class=note>Condo with a balcony; shared pool in a well-kept complex.</div>
+<a class=btn href="https://www.airbnb.com/rooms/23799990" target=_blank onclick="event.stopPropagation()">See it on Airbnb ↗</a></div></div><div class="card closer" onclick="go(2)">
+<img class=hero src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/218845147.jpg?k=39319db4b03a8551a584135c8bd8171beff05015d3566f520f46a5379b5d7047" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>3</span><span class=name>Casa Kanelo</span></div>
+<div class=price><b>$1,729</b> for 6 nights <span class=muted>($288 a night) · <span class=diff>$419 more than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ King room + room with 2 twins, each with its own bathroom</div>
+<div class=meta>🚶 plaza 2 min · beach 2 min · Casa Aguanas 7 min</div>
+<div class=meta>9.2/10 (30) · ❄️ AC 🏊 pool</div>
+<div class=note>Right in town. Small (78 m²) with a terrace and garden. Non-refundable.</div>
+<a class=btn href="https://www.booking.com/hotel/mx/casa-kanelo.html" target=_blank onclick="event.stopPropagation()">See it on Booking.com ↗</a></div></div><div class="card closer" onclick="go(3)">
+<img class=hero src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/311003860.jpg?k=4d6a326d57d07abd6ccc9408392adf63994f46cce4d28d85f8e6ebf340298ef2" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>4</span><span class=name>Casa de la Ballena, 2-bed apartment</span></div>
+<div class=price><b>$1,803</b> for 6 nights <span class=muted>($300 a night) · <span class=diff>$493 more than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ 2 king bedrooms, 2 bathrooms</div>
+<div class=meta>🚶 plaza 6 min · beach 4 min · Casa Aguanas 8 min</div>
+<div class=meta>9.7/10 (110) · ❄️ AC 🏊 pool</div>
+<div class=note>Garden courtyard with pool and hot tub. Breakfast included. Free cancellation before 14 Nov.</div>
+<a class=btn href="https://www.booking.com/hotel/mx/casa-de-la-ballena.html" target=_blank onclick="event.stopPropagation()">See it on Booking.com ↗</a></div></div><div class="card closer" onclick="go(4)">
+<img class=hero src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6OTI5Nzc1NTE1Nzc1OTU5Nzc2/original/af03be57-0801-4ad1-bfc2-ad7afc55a270.jpeg" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>5</span><span class=name>Quiet Luxury on Gringo Hill</span></div>
+<div class=price><b>$1,882</b> for 6 nights <span class=muted>($314 a night) · <span class=diff>$572 more than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ King room + double room, each with its own bathroom, + 3rd bathroom</div>
+<div class=meta>🚶 plaza 5 min · beach 10 min · Casa Aguanas 2 min</div>
+<div class=meta>5.0/5 (32) · ❄️ AC 🏊 pool</div>
+<div class=note>Most like Casa Amanecer: wraparound deck with jungle and beach views, rooftop infinity pool. Only about 2 min closer.</div>
+<a class=btn href="https://www.airbnb.com/rooms/929775515775959776" target=_blank onclick="event.stopPropagation()">See it on Airbnb ↗</a></div></div><h2>💸 Same price or cheaper</h2><div class="card value" onclick="go(5)">
+<img class=hero src="https://a0.muscache.com/im/pictures/93d8044b-0d84-4472-8bdf-011e37e3a1c9.jpg" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>6</span><span class=name>Sub Penthouse, Florence</span></div>
+<div class=price><b>$1,370</b> for 6 nights <span class=muted>($228 a night) · <span class=diff>$60 more than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ 3 bedrooms (king + 2 queens), 3 bathrooms</div>
+<div class=meta>🚶 plaza 6 min · beach 6 min · Casa Aguanas 11 min</div>
+<div class=meta>4.92/5 (96) · ❄️ AC 🏊 pool</div>
+<div class=note>Big rooftop terrace with BBQ, saltwater pool. Steep hill and stairs. Free cancellation before 16 Nov.</div>
+<a class=btn href="https://www.vrbo.com/1807003" target=_blank onclick="event.stopPropagation()">See it on VRBO ↗</a></div></div><div class="card value" onclick="go(6)">
+<img class=hero src="https://a0.muscache.com/im/pictures/miso/Hosting-875303478331631875/original/797b88d2-e592-4913-a09d-672bd0844976.jpeg" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>7</span><span class=name>Casa del Sol at Ataraxia</span></div>
+<div class=price><b>$1,212</b> for 6 nights <span class=muted>($202 a night) · <span class=diff>$98 less than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ 2 queen bedrooms, 2 bathrooms</div>
+<div class=meta>🚶 plaza 9 min · beach 4 min · Casa Aguanas 7 min</div>
+<div class=meta>5.0/5 (41) · ❄️ AC 🧺 laundry 🏊 pool</div>
+<div class=note>Balcony with outdoor dining; rooftop pool and lounge with ocean views; lift.</div>
+<a class=btn href="https://www.airbnb.com/rooms/875303478331631875" target=_blank onclick="event.stopPropagation()">See it on Airbnb ↗</a></div></div><div class="card value" onclick="go(7)">
+<img class=hero src="https://a0.muscache.com/im/pictures/hosting/Hosting-849308296901735429/original/ea9a9fb6-250d-4f63-af07-77ab69dd595b.jpeg" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>8</span><span class=name>Mickey&#x27;s Penthouse at Ataraxia</span></div>
+<div class=price><b>$1,097</b> for 6 nights <span class=muted>($183 a night) · <span class=diff>$213 less than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ 2 queen bedrooms, 2 bathrooms</div>
+<div class=meta>🚶 plaza 10 min · beach 5 min · Casa Aguanas 7 min</div>
+<div class=meta>5.0/5 (20) · ❄️ AC 🏊 pool</div>
+<div class=note>Same building as Casa del Sol, rooftop pool one floor up.</div>
+<a class=btn href="https://www.airbnb.com/rooms/849308296901735429" target=_blank onclick="event.stopPropagation()">See it on Airbnb ↗</a></div></div><div class="card value" onclick="go(8)">
+<img class=hero src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/368387177.jpg?k=1f634110b65cc2cdad7f06bbea7bb2617a4a3e5013ce681641c3f086e1ea3f14" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>9</span><span class=name>Casa Boho 2</span></div>
+<div class=price><b>$826</b> for 6 nights <span class=muted>($138 a night) · <span class=diff>$484 less than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ 2 bedrooms (king + twin, queen + twin), 2 bathrooms</div>
+<div class=meta>🚶 plaza 8 min · Casa Aguanas 8 min</div>
+<div class=meta>9.9/10 (16) · ❄️ AC 🏊 pool</div>
+<div class=note>Non-refundable at this price ($918 with free cancellation before 7 Nov). AC in each bedroom not confirmed.</div>
+<a class=btn href="https://www.booking.com/hotel/mx/casa-boho-2.html" target=_blank onclick="event.stopPropagation()">See it on Booking.com ↗</a></div></div><div class="card value" onclick="go(9)">
+<img class=hero src="https://a0.muscache.com/im/pictures/hosting/Hosting-1700269760668865219/original/59752ef9-cac3-4d9c-9485-6ceb69d00480.jpeg" alt="" loading=lazy onerror="this.remove()">
+<div class=body><div class=row><span class=badge>10</span><span class=name>Pacific Sanctuary</span></div>
+<div class=price><b>$632</b> for 6 nights <span class=muted>($105 a night) · <span class=diff>$678 less than Casa Amanecer</span></span></div>
+<div class=meta>🛏️ King room + own bathroom; room with 2 singles + own bathroom</div>
+<div class=meta>🚶 plaza 10 min · Casa Aguanas 9 min</div>
+<div class=meta>5.0/5 (8 reviews) · ❄️ AC</div>
+<div class=note>Cheapest good one, east side. New, so only 8 reviews. Free cancellation before 20 Nov.</div>
+<a class=btn href="https://www.airbnb.com/rooms/1700269760668865219" target=_blank onclick="event.stopPropagation()">See it on Airbnb ↗</a></div></div></div>
+<footer>Checked 5 Nov 2026; prices and seats can change. Totals are each site's own all-in price for these dates. Walking times are estimates. Airbnb pins are approximate. Nothing is booked.</footer>
+<script>
+const pins=[{"n": "Casa Amanecer, Gringo Hill", "lat": 20.865539, "lng": -105.4396029, "url": "https://www.airbnb.com/rooms/686266949664475760", "site": "Airbnb", "i": 1, "c": "#2a9d8f", "tot": "$1,310", "min": 3}, {"n": "Casa Lavanda", "lat": 20.8681, "lng": -105.4429, "url": "https://www.airbnb.com/rooms/23799990", "site": "Airbnb", "i": 2, "c": "#e9a23b", "tot": "$1,716", "min": 7}, {"n": "Casa Kanelo", "lat": 20.8696, "lng": -105.4412, "url": "https://www.booking.com/hotel/mx/casa-kanelo.html", "site": "Booking.com", "i": 3, "c": "#e9a23b", "tot": "$1,729", "min": 7}, {"n": "Casa de la Ballena, 2-bed apartment", "lat": 20.8678, "lng": -105.4435, "url": "https://www.booking.com/hotel/mx/casa-de-la-ballena.html", "site": "Booking.com", "i": 4, "c": "#e9a23b", "tot": "$1,803", "min": 8}, {"n": "Quiet Luxury on Gringo Hill", "lat": 20.8667, "lng": -105.4392, "url": "https://www.airbnb.com/rooms/929775515775959776", "site": "Airbnb", "i": 5, "c": "#e9a23b", "tot": "$1,882", "min": 2}, {"n": "Sub Penthouse, Florence", "lat": 20.8648, "lng": -105.445, "url": "https://www.vrbo.com/1807003", "site": "VRBO", "i": 6, "c": "#457b9d", "tot": "$1,370", "min": 11}, {"n": "Casa del Sol at Ataraxia", "lat": 20.8654, "lng": -105.4434, "url": "https://www.airbnb.com/rooms/875303478331631875", "site": "Airbnb", "i": 7, "c": "#457b9d", "tot": "$1,212", "min": 7}, {"n": "Mickey's Penthouse at Ataraxia", "lat": 20.8647, "lng": -105.4432, "url": "https://www.airbnb.com/rooms/849308296901735429", "site": "Airbnb", "i": 8, "c": "#457b9d", "tot": "$1,097", "min": 7}, {"n": "Casa Boho 2", "lat": 20.8664, "lng": -105.4439, "url": "https://www.booking.com/hotel/mx/casa-boho-2.html", "site": "Booking.com", "i": 9, "c": "#457b9d", "tot": "$826", "min": 8}, {"n": "Pacific Sanctuary", "lat": 20.8673, "lng": -105.4354, "url": "https://www.airbnb.com/rooms/1700269760668865219", "site": "Airbnb", "i": 10, "c": "#457b9d", "tot": "$632", "min": 9}];const home=[20.866472, -105.44];
+const map=L.map('map',{scrollWheelZoom:false,tap:true});
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles © Esri'}).addTo(map);
+const div=(h,s)=>L.divIcon({className:'',html:h,iconSize:[s,s],iconAnchor:[s/2,s/2],popupAnchor:[0,-s/2]});
+L.marker(home,{icon:div('<div class=home>🏠</div>',34),zIndexOffset:2000}).addTo(map).bindPopup('<b>🏠 Casa Aguanas</b><br>Gringo Hill. Walking times are from here.');
+const markers=pins.map(p=>L.marker([p.lat,p.lng],{icon:div(`<div class=pin style="background:${p.c}">${p.i}</div>`,28),zIndexOffset:p.i==1?1000:500}).addTo(map)
+ .bindPopup(`<b>${p.n}</b><br><b>${p.tot}</b> for 6 nights<br>🚶 ${p.min} min from Casa Aguanas<br><a href="${p.url}" target=_blank>See it on ${p.site} ↗</a>`));
+map.fitBounds([home,...pins.map(p=>[p.lat,p.lng])],{padding:[30,30]});
+function go(i){document.getElementById('map').scrollIntoView({behavior:'smooth'});map.setView(markers[i].getLatLng(),17);markers[i].openPopup();}
+</script></body></html>
